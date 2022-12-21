@@ -1,0 +1,26 @@
+<?php
+/**
+ * Copyright (c) 2020. dibuat Oleh Tama Asrory Ridhana, S.T, MTA.
+ * website : https://tamaasrory.com
+ * email : tamaasrory@gmail.com
+ */
+
+use Laravel\Lumen\Testing\DatabaseMigrations;
+use Laravel\Lumen\Testing\DatabaseTransactions;
+
+class {{class}} extends TestCase
+{
+    /**
+     * A basic test example.
+     *
+     * @return void
+     */
+    public function testExample()
+    {
+        $this->get('/');
+
+        $this->assertEquals(
+            $this->app->version(), $this->response->getContent()
+        );
+    }
+}

@@ -1,0 +1,153 @@
+<template>
+  <div>
+    <v-app-bar flat>
+      <v-btn
+        icon
+        dark
+        @click="backButton"
+      >
+        <v-icon color="#00a3ff">
+          mdi-arrow-left
+        </v-icon>
+      </v-btn>
+      <v-toolbar-title>Tambah {{title}}</v-toolbar-title>
+    </v-app-bar>
+    <v-container class="white">
+      <v-row class="py-6 py-md-8 px-2">
+        <v-col
+          cols="12"
+          md="6"
+          class="mx-auto"
+        >
+          <v-row>
+            <v-col
+              cols="12"
+              md="12"
+              class="py-0"
+            >
+              {{inputs}}
+              <v-btn
+                color="green"
+                large
+                :dark="!dataValidation"
+                :disabled="dataValidation"
+                @click="showDC = true"
+              >
+                <v-icon color="white">
+                  mdi-check
+                </v-icon>
+                SIMPAN
+              </v-btn>
+            </v-col>
+          </v-row>
+        </v-col>
+      </v-row>
+    </v-container>
+    <dialog-confirm
+      :show-dialog="showDC"
+      :negative-button="dcNegativeBtn"
+      :positive-button="dcPositiveBtn"
+      :disabled-negative-btn="dcdisabledNegativeBtn"
+      :disabled-positive-btn="dcdisabledPositiveBtn"
+      :progress="dcProgress"
+      :title="'Simpan'"
+      :message="dcMessages"
+    />
+  </div>
+</template>
+
+<script>
+import { mapActions } from 'vuex'
+import Dialog from '@/components/Dialog'
+import { inputValidator, isEmpty } from '@/plugins/supports'
+
+export default {
+  components: {
+    'dialog-confirm': Dialog
+  },
+  data () {
+    return {
+      datas: {
+        // {{data_cols}}
+      },
+      items: {
+        // {{item_cols}}
+      },
+      dataTypes: {
+        // {{data_type}}
+      },
+      schema: {
+        // {{data_validator}}
+      },
+      rules: {
+        required: v => {
+          v = isEmpty(v)
+          return !v || 'Tidak Boleh Kosong'
+        }
+      },
+
+      showDC: false,
+      dcMessages: 'Simpan {{title}} Sekarang?',
+      dcProgress: false,
+      dcdisabledNegativeBtn: false,
+      dcdisabledPositiveBtn: false,
+      dcNegativeBtn: () => { this.showDC = false },
+      dcPositiveBtn: () => this.postAdd()
+    }
+  },
+  computed: {
+    dataValidation () {
+      return inputValidator(this.schema, this.rules, this.datas)
+    }
+  },
+  created () {
+    this.create{{export_name}}().then(data => {
+      // this.items = isEmpty(data.items, {})
+    })
+  },
+  methods: {
+    ...mapActions(['add{{export_name}}', 'create{{export_name}}']),
+    backButton () { this.$router.push({ name: '{{route}}' }) },
+    postAdd () {
+      /* Initialize the form data */
+      const formData = new FormData()
+
+      /* Add the form data we need to submit */
+      Object.keys(this.datas).forEach(d => {
+        const tmp = this.datas[d]
+        if (this.dataTypes[d] !== 'json') {
+          formData.append(d, tmp)
+        } else {
+          formData.append(d,
+            new Blob([JSON.stringify(tmp)],
+              { type: 'application/json' })
+          )
+        }
+      })
+
+      this.dcProgress = true
+      this.dcdisabledNegativeBtn = true
+      this.dcdisabledPositiveBtn = true
+      this.dcMessages = 'Tunggu Sebentar, Sedang Menyimpan {{title}}...'
+      this.add{{export_name}}(formData).then((res) => {
+        this.dcProgress = false
+        this.dcMessages = res.msg
+        setTimeout(() => {
+          this.showDC = false
+          this.$router.push({ name: '{{route}}' })
+          this.dcMessages = 'Simpan {{title}} Sekarang?'
+        }, 2000)
+      })
+    }
+  }
+}
+</script>
+
+<style>
+.fs-14 > label{
+    font-size: 14px !important;
+}
+.theme--light.v-data-table.v-data-table--fixed-header thead th {
+    background-color: #eee !important;
+}
+</style>
