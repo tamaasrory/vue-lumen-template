@@ -50,7 +50,7 @@
               size="40"
             >
               <span class="white--text text-h5">
-                {{ user ? user.name.substring(0, 1).toUpperCase() : "" }}
+                {{ user ? getUserName() : "" }}
               </span>
             </v-avatar>
           </v-list-item-icon>
@@ -268,6 +268,9 @@ export default {
     },
     cancelLogout () {
       this.showDialogLogout = false
+    },
+    getUserName () {
+      return user?.name?.substring(0, 1)?.toUpperCase();
     },
     toggleDrawer () {
       if (this.isAuth) {
