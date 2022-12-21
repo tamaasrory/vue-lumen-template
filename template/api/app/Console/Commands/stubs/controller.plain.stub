@@ -1,0 +1,11 @@
+<?php
+namespace DummyNamespace;
+use App\Http\Controllers\Base\Controller;
+
+class DummyClass extends Controller
+{
+    public function index()
+    {
+        //
+    }
+}

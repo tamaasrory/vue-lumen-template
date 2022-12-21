@@ -1,0 +1,23 @@
+.cui-label {
+    font-size: 12pt !important;
+}
+
+.cui-font-12pt {
+    font-size: 12pt !important;
+}
+
+.cui-input-sm {
+    align-items: center;
+    width: 80px;
+    border: 1px solid #ccc;
+    height: 35px;
+    border-radius: 5px;
+    line-height: 1.5;
+    font-size: 12pt;
+    padding-left: 7px;
+}
+
+.cui-list-item {
+    border-top: 1px solid #ccc;
+    height: 45px !important;
+}
