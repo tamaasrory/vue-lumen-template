@@ -69,7 +69,7 @@
                 text-transform: capitalize !important;
               "
             >
-              {{ user ? user.role[0] : "" }}
+              {{ user ? user?.role[0] : "" }}
             </v-list-item-subtitle>
           </v-list-item-content>
           <v-list-item-action>
