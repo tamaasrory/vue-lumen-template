@@ -5,12 +5,12 @@
   "author": "{{author}}",
   "private": true,
   "scripts": {
-    "start-backend": "cd ./api && php artisan serve --port 8000",
     "start-frontend": "vue-cli-service serve --port 8080",
     "secure-frontend": "vue-cli-service serve --port 8080 --https true",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "vueui": "vue ui"
+    "vueui": "vue ui",
+    "start-backend": "cd ./api && php artisan serve --port 8000"
   },
   "dependencies": {
     "@mdi/font": "^6.6.96",
