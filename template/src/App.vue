@@ -50,7 +50,7 @@
               size="40"
             >
               <span class="white--text text-h5">
-                {{ user ? getUserName : "" }}
+                {{ getUserAvatar }}
               </span>
             </v-avatar>
           </v-list-item-icon>
@@ -59,7 +59,7 @@
               class="title"
               style="font-size: 15px !important; white-space: nowrap !important"
             >
-              {{ user ? user.name : "" }}
+              {{ getUserName }}
             </v-list-item-title>
             <v-list-item-subtitle
               style="
@@ -69,7 +69,7 @@
                 text-transform: capitalize !important;
               "
             >
-              {{ user ? user?.role[0] : "" }}
+              {{ getUserRole }}
             </v-list-item-subtitle>
           </v-list-item-content>
           <v-list-item-action>
@@ -162,8 +162,14 @@ export default {
   computed: {
     ...mapGetters(['isAuth']),
     ...mapState(['user', 'perm']),
+    getUserAvatar () {
+      return user?.name?.substring(0, 1)?.toUpperCase() ?? 'O';
+    },
     getUserName () {
-      return user?.name?.substring(0, 1)?.toUpperCase();
+      return user?.name ?? '';
+    },
+    getUserRole () {
+      return user?.role[0] ?? '';
     },
     mainClass () {
       return (
