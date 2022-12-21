@@ -50,7 +50,7 @@
               size="40"
             >
               <span class="white--text text-h5">
-                {{ user ? getUserName() : "" }}
+                {{ user ? getUserName : "" }}
               </span>
             </v-avatar>
           </v-list-item-icon>
@@ -162,6 +162,9 @@ export default {
   computed: {
     ...mapGetters(['isAuth']),
     ...mapState(['user', 'perm']),
+    getUserName () {
+      return user?.name?.substring(0, 1)?.toUpperCase();
+    },
     mainClass () {
       return (
         'pt-1 ' +
@@ -268,9 +271,6 @@ export default {
     },
     cancelLogout () {
       this.showDialogLogout = false
-    },
-    getUserName () {
-      return user?.name?.substring(0, 1)?.toUpperCase();
     },
     toggleDrawer () {
       if (this.isAuth) {
