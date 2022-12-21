@@ -17,7 +17,7 @@
         floating
         mini-variant-width="68"
         :mini-variant.sync="minivar"
-        :expand-on-hover="$vuetify.breakpoint.smAndUp ? drawer : false"
+        :expand-on-hover="$vuetify.breakpoint.smAndUp ? true : false"
         class="nav-mouse-enter"
       >
         <v-list-item>
