@@ -17,7 +17,7 @@
         floating
         mini-variant-width="68"
         :mini-variant.sync="minivar"
-        :expand-on-hover="$vuetify.breakpoint.smAndUp ? getDrawer : false"
+        :expand-on-hover="$vuetify.breakpoint.smAndUp ? drawer : false"
         class="nav-mouse-enter"
       >
         <v-list-item>
@@ -31,7 +31,7 @@
           </v-list-item-content>
           <v-list-item-action class="d-none d-md-block">
             <v-icon @click="toggleDrawer">
-              {{ getDrawer ? "mdi-radiobox-blank" : "mdi-record-circle-outline" }}
+              {{ drawer ? "mdi-radiobox-blank" : "mdi-record-circle-outline" }}
             </v-icon>
           </v-list-item-action>
         </v-list-item>
@@ -162,9 +162,6 @@ export default {
   computed: {
     ...mapGetters(['isAuth']),
     ...mapState(['user', 'perm']),
-    getDrawer () {
-      return this.drawer
-    },
     getUserAvatar () {
       return user?.name?.substring(0, 1)?.toUpperCase() ?? 'O';
     },
