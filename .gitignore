@@ -23,4 +23,3 @@ yarn-error.log*
 *.sw?
 api/storage/app/public/*
 api/composer.lock
-api/public/data-lokasi-24112021.xlsx
