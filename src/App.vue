@@ -163,13 +163,13 @@ export default {
     ...mapGetters(['isAuth']),
     ...mapState(['user', 'perm']),
     getUserAvatar () {
-      return user?.name?.substring(0, 1)?.toUpperCase() ?? 'O';
+      return this.user?.name?.substring(0, 1)?.toUpperCase() ?? 'O';
     },
     getUserName () {
-      return user?.name ?? '';
+      return this.user?.name ?? '';
     },
     getUserRole () {
-      return user?.role[0] ?? '';
+      return this.user?.role[0] ?? '';
     },
     mainClass () {
       return (
