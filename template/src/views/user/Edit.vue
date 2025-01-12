@@ -1,6 +1,5 @@
 <!--
-  - Copyright (c) 2020. dibuat Oleh Tama Asrory Ridhana, S.T, MTA.
-  - website : https://tamaasrory.com
+  - author : tama asrory
   - email : tamaasrory@gmail.com
   -->
 

@@ -1,7 +1,5 @@
 /*
- * Copyright (c) 2020. dibuat Oleh Tama Asrory Ridhana, S.T, MTA.
- * website : https://tamaasrory.com
- * email : tamaasrory@gmail.com
+ * contact me : tamaasrory@gmail.com
  */
 import User from './menus/base/user'
 import Roles from './menus/base/roles'
